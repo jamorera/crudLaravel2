@@ -7,21 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
+
+    // Relaciones
+
+    // Muchos a muchos
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
