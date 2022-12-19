@@ -103,10 +103,6 @@ class UserController extends Controller
                 $url = Storage::put('public/profiles', $request->file('image'));
                 Storage::delete($user->image);
                 $data['image'] = $url;
-                // if ($user->image) {
-                // }else{
-                //     $data['image'] = $url;
-                // }
             }
             $user->update($data);
             $user->roles()->sync($request->role);

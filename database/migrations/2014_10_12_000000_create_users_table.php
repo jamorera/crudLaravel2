@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('image');
             $table->enum('documentType',['RC','CC','CE','TI','PA']);
+            $table->string('numDocument');
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
