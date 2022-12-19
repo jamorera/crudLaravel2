@@ -77,7 +77,7 @@ class UserController extends Controller
     public function show($id)
     {
         try {
-            $info = ['data' => User::findOrFail($id)];
+            $info = ['data' => User::with('roles:title')->findOrFail($id)];
             $code = 200;
         } catch (\Throwable $th) {
             $info = ["msg" => "No ha sido posible realizar proceso, por favor verifique e intente nuevamente."];
